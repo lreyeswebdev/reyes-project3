@@ -5,6 +5,7 @@ const dateElement = document.getElementById("date");
 const inputTask = document.getElementById("inputTask");
 const addBtn = document.getElementById("addBtn");
 const list = document.getElementById("list");
+const clearBtn = document.getElementById("clearBtn");
 
 // Classes names
 const CHECK = "fa-check-circle";
@@ -108,3 +109,9 @@ list.addEventListener("click", function(event){
 
     localStorage.setItem("TASK", JSON.stringify(LIST));
 });
+
+// Clear all tasks
+clearBtn.onclick = () => {
+    localStorage.clear();
+    location.reload();
+};
