@@ -75,3 +75,8 @@ body {
 .fa-circle:hover {
     cursor: pointer;
 }
+
+.fa-trash-alt:hover {
+    color: red;
+    cursor: pointer;
+}

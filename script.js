@@ -43,12 +43,15 @@ function loadList(array) {
 // Add Tasks
 function addTask(task, id, done, trash) {
 
+    if(trash) { return; }
+
     const DONE = done ? CHECK : UNCHECK;
     const LINE = done ? LINE_THROUGH : "";
 
     const item = `<li class="item">
                 <i class="fas ${DONE}" job="complete" id="${id}"></i>
                 <p class="text ${LINE}">${task}</p>
+                <i class="fas fa-trash-alt" job="delete" id="${id}"></i>
                 </li>
                 `;
     const position = "beforeend";
@@ -56,6 +59,7 @@ function addTask(task, id, done, trash) {
     list.insertAdjacentHTML(position, item);
 }
 
+// Add Task on button click
 addBtn.onclick = () => {
     const task = inputTask.value;
 
@@ -85,12 +89,21 @@ function completeTask(element) {
     LIST[element.id].done = LIST[element.id].done ? false : true;
 }
 
+// Remove Task
+function removeTask(element) {
+    element.parentNode.parentNode.removeChild(element.parentNode);
+
+    LIST[element.id].trash = true;
+}
+
 list.addEventListener("click", function(event){
     const element = event.target;
     const elementJob = element.attributes.job.value;
 
-    if (elementJob == "complete") {
+    if (elementJob === "complete") {
         completeTask(element);
+    } else if (elementJob === "delete") {
+        removeTask(element);
     }
 
     localStorage.setItem("TASK", JSON.stringify(LIST));
