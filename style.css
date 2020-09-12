@@ -45,18 +45,64 @@ body {
 #add-section {
     display: flex;
     flex-wrap: wrap;
-    margin-left: 20px;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-bottom: 10px;    
+}
+
+.btn {
+    padding: 5px 10px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+#addBtn:hover {
+    background-color: #74ebd5;
+    cursor: pointer;
+}
+
+#clearBtn:hover {
+    background-color: #acb6e5;
+    cursor: pointer;
+}
+
+.inputField {
+    height: 35px;
+    width: 350px;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+}
+
+::placeholder {
+    text-align: center;    
+    font-size: 15px;
+    font-weight: 600;
 }
 
 .item {
-    list-style: none;
-    position: relative;
+    list-style: none;    
     border-bottom: 1px solid rgba(0,0,0,0.1);
     padding: 0;
-    margin: 0;
-    min-height: 10px;
+    margin: 0;    
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    height: 45px;
+}
+
+p {
+    width: 400px;
+    display: flex;
+    justify-content: start;
+}
+
+i {
+    padding: 15px;
 }
 
 .lineThrough{
@@ -79,4 +125,8 @@ body {
 .fa-trash-alt:hover {
     color: red;
     cursor: pointer;
+}
+
+#bottom-section {
+    padding: 15px;
 }

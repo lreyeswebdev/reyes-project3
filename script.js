@@ -97,6 +97,7 @@ function removeTask(element) {
     LIST[element.id].trash = true;
 }
 
+// Event listerner for task completion or removal
 list.addEventListener("click", function(event){
     const element = event.target;
     const elementJob = element.attributes.job.value;
