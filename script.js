@@ -6,6 +6,11 @@ const inputTask = document.getElementById("inputTask");
 const addBtn = document.getElementById("addBtn");
 const list = document.getElementById("list");
 
+// Classes names
+const CHECK = "fa-check-circle";
+const UNCHECK = "fa-circle";
+const LINE_THROUGH = "lineThrough";
+
 // Date
 let options = { weekday:'long', month:'short', day:'numeric'};
 
@@ -37,8 +42,14 @@ function loadList(array) {
 
 // Add Tasks
 function addTask(task, id, done, trash) {
+
+    const DONE = done ? CHECK : UNCHECK;
+    const LINE = done ? LINE_THROUGH : "";
+
     const item = `<li class="item">
-                <p class="">${task}</p>
+                <i class="fas ${DONE}" job="complete" id="${id}"></i>
+                <p class="text ${LINE}">${task}</p>
+                </li>
                 `;
     const position = "beforeend";
 
@@ -64,3 +75,23 @@ addBtn.onclick = () => {
     }
     inputTask.value = "";
 }
+
+// Completed Task
+function completeTask(element) {
+    element.classList.toggle(CHECK);
+    element.classList.toggle(UNCHECK);
+    element.parentNode.querySelector(".text").classList.toggle(LINE_THROUGH);
+    
+    LIST[element.id].done = LIST[element.id].done ? false : true;
+}
+
+list.addEventListener("click", function(event){
+    const element = event.target;
+    const elementJob = element.attributes.job.value;
+
+    if (elementJob == "complete") {
+        completeTask(element);
+    }
+
+    localStorage.setItem("TASK", JSON.stringify(LIST));
+});
